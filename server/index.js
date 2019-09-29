@@ -36,6 +36,11 @@ const redisClient = redis.createClient({
 
 const redisPublisher = redisClient.duplicate();
 
+app.use('*', (req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+})
+
 app.get('/', (req, res) => {
   res.send('Hi');
 });
